@@ -1,6 +1,7 @@
 <template>
   <li>
-    <h2>{{ todoName }} {{ isCompleted ? "(Done)" : "" }}</h2>
+    <!-- <h2>{{ todoName }} {{ isCompleted ? "(Done)" : "" }}</h2> -->
+    <h2>{{ todoName }}</h2>
     <button @click="toggleTodoDetails">
       {{ todoDetailsVisible ? "Hide" : "Show" }} Todo Details
     </button>

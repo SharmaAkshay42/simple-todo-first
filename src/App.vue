@@ -8,8 +8,15 @@
       <ul>
         <!-- <todo-list v-for="todo in todos" :key="todo.id" :id="todo.id" :todo-name="todo.todoName"
           :todo-details="todo.todoDetails" :is-completed="todo.isCompleted" @todo-complete="toggleCompleted"></todo-list> -->
-          <todo-list v-for="todo in todos" :key="todo.id" :id="todo.id" :todo-name="todo.todoName"
-          :todo-details="todo.todoDetails" :is-completed="todo.isCompleted" @todo-complete="toggleCompleted"></todo-list>
+        <todo-list
+          v-for="todo in todos"
+          :key="todo.id"
+          :id="todo.id"
+          :todo-name="todo.todoName"
+          :todo-details="todo.todoDetails"
+          :is-completed="todo.isCompleted"
+          @todo-complete="toggleCompleted"
+        ></todo-list>
       </ul>
     </main>
   </section>
@@ -53,21 +60,29 @@ export default {
     },
     toggleCompleted(id) {
       console.log("Inside toggleCompleted");
-      const completedTodo = this.todos.find((todo) => todo.id === id);
-      completedTodo.isCompleted = !completedTodo.isCompleted;
-      if (completedTodo.isCompleted) {
-        swal({
-          title: "Todo Completed",
-          text: "You completed your task",
-          icon: "success",
-        });
-      } else {
-        swal({
-          title: "Todo Incomplete",
-          text: "You've to do it again",
-          icon: "warning",
-        });
-      }
+      // filter returns an array - so we get arrays of todos not completed.
+      // And assign it to our todos array
+      this.todos = this.todos.find((todo) => todo.id !== id);
+      // const completedTodo = this.todos.find((todo) => todo.id !== id);
+      // completedTodo.isCompleted = !completedTodo.isCompleted;
+      // if (completedTodo.isCompleted) {
+      //   swal({
+      //     title: "Todo Completed",
+      //     text: "You completed your task",
+      //     icon: "success",
+      //   });
+      // } else {
+      //   swal({
+      //     title: "Todo Incomplete",
+      //     text: "You've to do it again",
+      //     icon: "warning",
+      //   });
+      // }
+      swal({
+        title: "Congratulations!",
+        text: "Task Completed",
+        icon: "success",
+      });
     },
   },
 };
@@ -89,7 +104,7 @@ export default {
 }
 
 html {
-  font-family: 'Baloo 2', Arial, Helvetica, sans-serif;
+  font-family: "Baloo 2", Arial, Helvetica, sans-serif;
   height: 100vh;
   background-color: var(--body-colour);
 }
@@ -140,8 +155,8 @@ header h1 {
 #app button {
   font: inherit;
   cursor: pointer;
-  border: 1px solid var(--pinkish);;
-  background-color: var(--pinkish);;
+  border: 1px solid var(--pinkish);
+  background-color: var(--pinkish);
   color: white;
   padding: 0.05rem 1rem;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.26);
@@ -163,7 +178,6 @@ ul h2 {
   color: var(--pinkish);
 }
 
-
 form {
   display: grid;
   place-items: center;
@@ -175,6 +189,4 @@ form {
 p {
   text-align: center;
 }
-
-
 </style>
