@@ -6,11 +6,11 @@ import vueJsx from "@vitejs/plugin-vue-jsx";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: "/simple-todo-first/",
   plugins: [vue(), vueJsx()],
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
-    publicPath: process.env.NODE_ENV === "production" ? "/REPO_NAME/" : "/",
   },
 });
