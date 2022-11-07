@@ -12,7 +12,7 @@ import CompletedList from "./components/CompletedList.vue";
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        { path: "/", redirect: "/todos" },
+        { path: "/", redirect: "/new" },
         { path: "/todos", component: TodoList },
         { path: "/completed", component: CompletedList },
         { path: "/new", component: NewTodo },

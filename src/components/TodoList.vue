@@ -1,5 +1,5 @@
 <template>
-  <h2 v-if="todos.length === 0">No todos. Create one <router-link to="/new">here</router-link></h2>
+  <!-- <h2 v-if="todos">No todos. Create one <router-link to="/new">here</router-link></h2> -->
   <ul>
     <todo-item v-for="todo in todos"
        :key="todo.id" :id="todo.id" :todo-name="todo.todoName"
