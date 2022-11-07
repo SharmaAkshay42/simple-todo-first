@@ -4,7 +4,7 @@
         <button @click="toggleTodoDetails">
             {{ todoDetailsVisible ? "Hide" : "Show" }} Todo Details
         </button>
-        <button @click="completeTodo(id)">Completed</button>
+        <button v-if="!isCompleted" @click="completeTodo(id)">Completed</button>
         <p v-if="todoDetailsVisible">
             {{ todoDetails }}
         </p>
@@ -12,7 +12,6 @@
 </template>
 
 <script>
-
 export default {
     inject: ['completeTodo'],
     emits: ['complete-todo'],
@@ -56,12 +55,10 @@ li {
     border-radius: 12px;
     padding: 1rem;
 }
-
 li h3 {
     margin: 0.5rem 0;
     font-size: 1.25rem;
 }
-
 a {
     text-decoration: none;
     color: white;
@@ -69,9 +66,9 @@ a {
     padding: 0.5rem 1.5rem;
     background-color: #11005c;
 }
-
 a:hover,
 a:active {
     background-color: #220a8d;
 }
+
 </style>

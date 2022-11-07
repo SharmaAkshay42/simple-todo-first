@@ -10,7 +10,6 @@
 import { computed } from "@vue/reactivity";
 import swal from "sweetalert";
 import TheNavigation from "./components/TheNavigation.vue";
-
 export default {
   components: {
     TheNavigation,
@@ -24,6 +23,9 @@ export default {
   },
   methods: {
     addTodo(todoName, todoDetails = "") {
+      if (!this.todos) {
+        this.todos = [];
+      }
       const newTodo = {
         id: new Date().toISOString(),
         todoName: todoName,
@@ -40,9 +42,10 @@ export default {
       });
     },
     toggleCompleted(id) {
-      this.todos = this.todos.find((todo) => todo.id !== id);
       const doneTodos = this.todos.find((todo) => todo.id === id);
+      doneTodos.isCompleted = true;
       this.completedTodos.push(doneTodos);
+      this.todos = this.todos.find((todo) => todo.id !== id);
       swal({
         title: "Congratulations!",
         text: "Task Completed",
@@ -67,11 +70,9 @@ export default {
 * {
   box-sizing: border-box;
 }
-
 html {
   font-family: sans-serif;
 }
-
 body {
   margin: 0;
 }

@@ -1,6 +1,6 @@
 <template>
+  <h2 v-if="todos.length === 0">No todos. Create one <router-link to="/new">here</router-link></h2>
   <ul>
-
     <todo-item v-for="todo in todos"
        :key="todo.id" :id="todo.id" :todo-name="todo.todoName"
             :todo-details="todo.todoDetails" :is-completed="todo.isCompleted" @toggle-complete="toggleCompleted(todos.id)"></todo-item>
@@ -9,7 +9,6 @@
 
 <script>
 import TodoItem from "./TodoItem.vue";
-
 export default {
   components: {
     TodoItem,
@@ -20,13 +19,13 @@ export default {
   //     this.todos;
   //   }
   // }
-  computed: {
-    activeTodos() {
-      // console.log(this.todos);
-      return this.todos.filter((todo) => !todo.isComplete);
-      // this.todos = this.todos.filter((todo) => ! todo.isCom)
-    },
-  }
+  // computed: {
+  //   activeTodos() {
+  //     // console.log(this.todos);
+  //     return this.todos.filter((todo) => !todo.isComplete);
+  //     // this.todos = this.todos.filter((todo) => ! todo.isCom)
+  //   },
+  // }
 };
 </script>
 
