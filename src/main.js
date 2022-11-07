@@ -12,11 +12,11 @@ import CompletedList from "./components/CompletedList.vue";
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        { path: "/", redirect: "new" },
-        { path: "todos", component: TodoList },
-        { path: "completed", component: CompletedList },
-        { path: "new", component: NewTodo },
-        { path: ":notFound(.*)", component: NotFound },
+        { path: "/", redirect: "/simple-todo-first/new" },
+        { path: "/simple-todo-first/todos", component: TodoList },
+        { path: "/simple-todo-first/completed", component: CompletedList },
+        { path: "/simple-todo-first/new", component: NewTodo },
+        { path: "/simple-todo-first/:notFound(.*)", component: NotFound },
     ],
     linkActiveClass: "active",
 });

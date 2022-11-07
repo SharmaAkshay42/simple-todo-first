@@ -3,13 +3,13 @@
         <nav>
             <ul>
                 <li>
-                    <router-link to="/new">Add</router-link>
+                    <router-link to="/simple-todo-first/new">Add</router-link>
                 </li>
                 <li>
-                    <router-link to="/todos">Show Todos</router-link>
+                    <router-link to="/simple-todo-first/todos">Show Todos</router-link>
                 </li>
                 <li>
-                    <router-link to="/completed">Completed</router-link>
+                    <router-link to="/simple-todo-first/completed">Completed</router-link>
                 </li>
             </ul>
         </nav>
