@@ -1,10 +1,10 @@
-<template>
+<template v-if="isCompleted">
     <li>
         <h2>{{ todoName }}</h2>
         <button @click="toggleTodoDetails">
             {{ todoDetailsVisible ? "Hide" : "Show" }} Todo Details
         </button>
-        <button @click="toggleCompleted">Completed</button>
+        <button @click="completeTodo(id)">Completed</button>
         <p v-if="todoDetailsVisible">
             {{ todoDetails }}
         </p>
@@ -12,8 +12,17 @@
 </template>
 
 <script>
+
 export default {
-    props: {
+    inject: ['completeTodo'],
+    emits: ['complete-todo'],
+    data() {
+        return {
+            todoDetailsVisible: false,
+        };
+    },
+    props:
+    {
         id: {
             type: String,
             required: true,
@@ -30,6 +39,11 @@ export default {
             type: Boolean,
             required: false,
             default: false,
+        },
+    },
+    methods: {
+        toggleTodoDetails() {
+            this.todoDetailsVisible = !this.todoDetailsVisible;
         },
     },
 }

@@ -6,21 +6,24 @@
 </template>
 
 <script>
+import { computed } from "vue";
 import swal from "sweetalert";
+import TheNavigation from "./components/TheNavigation.vue";
 
 export default {
+  components: {
+    TheNavigation,
+  },
   data() {
     return {
-      todos: [
-        {id: "One", todoName: "Learn Vue", todoDetails: "Learn Vue by making a project", isCompleted: false },
-      ],
+      todo: {
+        id: "",
+        todoName: "",
+        todoDetails: "",
+        isCompleted: false,
+      },
+      todos: [],
       completedTodos: [],
-    };
-  },
-  provide() {
-    return {
-      todos: this.todos,
-      newTodo: this.addTodo,
     };
   },
   methods: {
@@ -45,14 +48,25 @@ export default {
       console.log("Inside toggleCompleted");
       // filter returns an array - so we get arrays of todos not completed.
       // And assign it to our todos array
-      this.completedTodos = this.todos.find((todo) => todo.id === id);
+      // this.completedTodos = this.todos.find((todo) => todo.id === id);
       this.todos = this.todos.find((todo) => todo.id !== id);
+      // this.completedTodo = this.todos.find((todo) => todo.id === id);
+      // this.completedTodo.isCompleted = true;
+      // console.log(this.todos);
       swal({
         title: "Congratulations!",
         text: "Task Completed",
         icon: "success",
       });
     },
+  },
+  provide() {
+    return {
+      todo: this.todo,
+      todos: computed(() => this.todos),
+      newTodo: this.addTodo,
+      completeTodo: this.toggleCompleted,
+    };
   },
 };
 </script>

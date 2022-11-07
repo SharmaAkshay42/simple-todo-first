@@ -3,33 +3,20 @@
     <form @submit.prevent="addTodo">
       <div>
         <label>Todo</label>
-        <input type="text" v-model="todos.todoName" />
+        <input type="text" v-model="todo.todoName" />
       </div>
       <div>
         <label>Details</label>
-        <input type="text" v-model="todos.todoDetails" />
+        <input type="text" v-model="todo.todoDetails" />
       </div>
-      <div><button type="button" @click="newTodo(todos.todoName, todos.todoDetails)">Add Todo</button></div>
+      <div><button type="button" @click="newTodo(todo.todoName, todo.todoDetails)">Add Todo</button></div>
     </form>
   </the-card>
 </template>
 
 <script>
 export default {
-  inject: ["todos", "newTodo"],
+  inject: ["todo", "newTodo"],
   emits: ["new-todo"],
-  // data() {
-  //   return {
-  //     todoName: "",
-  //     todoDetails: "",
-  //   };
-  // },
-  // methods: {
-  //   newTodo() {
-  //     this.$emit("add-todo", this.todoName, this.todoDetails);
-  //     this.todoName = "";
-  //     this.todoDetails = "";
-  //   },
-  // },
 };
 </script>

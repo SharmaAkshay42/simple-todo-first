@@ -21,7 +21,7 @@ const router = createRouter({
 });
 
 const app = createApp(App);
-
+app.config.unwrapInjectedRef = true;
 // use Router on app
 app.use(router);
 
