@@ -20,3 +20,11 @@ export default {
   emits: ["new-todo"],
 };
 </script>
+
+<style>
+form {
+  margin: 2rem auto;
+  max-width: 40rem;
+  padding: 0;
+}
+</style>

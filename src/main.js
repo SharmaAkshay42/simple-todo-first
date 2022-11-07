@@ -7,13 +7,14 @@ import NewTodo from "./components/NewTodo.vue";
 import TodoList from "./components/TodoList.vue";
 import TheNavigation from "./components/TheNavigation.vue";
 import NotFound from "./components/NotFound.vue";
+import CompletedList from "./components/CompletedList.vue";
 
 const router = createRouter({
     history: createWebHistory(),
     routes: [
         { path: "/", redirect: "/todos" },
-        { path: "/completed", component: TodoList },
         { path: "/todos", component: TodoList },
+        { path: "/completed", component: CompletedList },
         { path: "/new", component: NewTodo },
         { path: "/:notFound(.*)", component: NotFound },
     ],

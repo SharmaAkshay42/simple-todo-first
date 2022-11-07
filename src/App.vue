@@ -6,7 +6,8 @@
 </template>
 
 <script>
-import { computed } from "vue";
+// import { computed } from "vue";
+import { computed } from "@vue/reactivity";
 import swal from "sweetalert";
 import TheNavigation from "./components/TheNavigation.vue";
 
@@ -16,12 +17,7 @@ export default {
   },
   data() {
     return {
-      todo: {
-        id: "",
-        todoName: "",
-        todoDetails: "",
-        isCompleted: false,
-      },
+      // todos: [{ id: "one", todoName: "Learn Vue", todoDetails: "Make a project", isCompleted: false }],
       todos: [],
       completedTodos: [],
     };
@@ -35,7 +31,6 @@ export default {
         isCompleted: false,
       };
       this.todos.push(newTodo);
-      // console.log(newTodo);
       this.todos.todoName = "";
       this.todos.todoDetails = "";
       swal({
@@ -45,14 +40,9 @@ export default {
       });
     },
     toggleCompleted(id) {
-      console.log("Inside toggleCompleted");
-      // filter returns an array - so we get arrays of todos not completed.
-      // And assign it to our todos array
-      // this.completedTodos = this.todos.find((todo) => todo.id === id);
       this.todos = this.todos.find((todo) => todo.id !== id);
-      // this.completedTodo = this.todos.find((todo) => todo.id === id);
-      // this.completedTodo.isCompleted = true;
-      // console.log(this.todos);
+      const doneTodos = this.todos.find((todo) => todo.id === id);
+      this.completedTodos.push(doneTodos);
       swal({
         title: "Congratulations!",
         text: "Task Completed",
@@ -62,7 +52,9 @@ export default {
   },
   provide() {
     return {
-      todo: this.todo,
+      todo: Object,
+      // todos: this.todos,
+      completedTodos: computed(() => this.completedTodos),
       todos: computed(() => this.todos),
       newTodo: this.addTodo,
       completeTodo: this.toggleCompleted,

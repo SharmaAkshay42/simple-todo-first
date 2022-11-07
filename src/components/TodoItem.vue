@@ -1,4 +1,4 @@
-<template v-if="isCompleted">
+<template v-show="isCompleted">
     <li>
         <h2>{{ todoName }}</h2>
         <button @click="toggleTodoDetails">
