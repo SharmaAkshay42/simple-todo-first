@@ -12,7 +12,7 @@ import CompletedList from "./components/CompletedList.vue";
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        { path: "/", redirect: "/simple-todo-first/new" },
+        { path: "/simple-todo-first/", redirect: "/simple-todo-first/todos" },
         { path: "/simple-todo-first/todos", component: TodoList },
         { path: "/simple-todo-first/completed", component: CompletedList },
         { path: "/simple-todo-first/new", component: NewTodo },
@@ -26,7 +26,7 @@ app.config.unwrapInjectedRef = true;
 // use Router on app
 app.use(router);
 
-// unlock this custom component & tag
+// unlock custom components & tag
 app.component("the-navigation", TheNavigation);
 app.component("the-card", TheCard);
 app.component("todo-list", TodoList);

@@ -1,6 +1,6 @@
 <template>
   <the-card>
-    <form @submit.prevent="addTodo">
+    <form @submit.prevent>
       <div>
         <label>Todo</label>
         <input type="text" v-model="todo.todoName" />
@@ -9,7 +9,7 @@
         <label>Details</label>
         <input type="text" v-model="todo.todoDetails" />
       </div>
-      <div><button type="button" @click="newTodo(todo.todoName, todo.todoDetails)">Add Todo</button></div>
+      <div><button type="submit" @click="newTodo(todo.todoName, todo.todoDetails)">Add Todo</button></div>
     </form>
   </the-card>
 </template>
@@ -18,6 +18,12 @@
 export default {
   inject: ["todo", "newTodo"],
   emits: ["new-todo"],
+  methods: {
+    addTodo() {
+      this.todo.todoName = '';
+      this.todo.todoDetails = '';
+    }
+  }
 };
 </script>
 
@@ -52,7 +58,6 @@ button {
     background: transparent;
     border: 1px solid transparent;
     cursor: pointer;
-    /* color: white; */
     color: white;
     background-color: #1a037e;
     padding: 0.5rem 1.5rem;

@@ -6,8 +6,7 @@
 </template>
 
 <script>
-// import { computed } from "vue";
-import { computed } from "@vue/reactivity";
+import { computed } from "vue";
 import swal from "sweetalert";
 import TheNavigation from "./components/TheNavigation.vue";
 export default {
@@ -16,16 +15,18 @@ export default {
   },
   data() {
     return {
-      // todos: [{ id: "one", todoName: "Learn Vue", todoDetails: "Make a project", isCompleted: false }],
+      todo: {
+        id: '',
+        todoName: '',
+        todoDetails: '',
+        isCompleted: false,
+      },
       todos: [],
       completedTodos: [],
     };
   },
   methods: {
     addTodo(todoName, todoDetails = "") {
-      if (!this.todos) {
-        this.todos = [];
-      }
       const newTodo = {
         id: new Date().toISOString(),
         todoName: todoName,
@@ -33,8 +34,8 @@ export default {
         isCompleted: false,
       };
       this.todos.push(newTodo);
-      this.todos.todoName = "";
-      this.todos.todoDetails = "";
+      this.todo.todoName = "";
+      this.todo.todoDetails = "";
       swal({
         title: "Todo Added",
         text: "",
@@ -42,10 +43,14 @@ export default {
       });
     },
     toggleCompleted(id) {
+      // Find the todo that has been completed
       const doneTodos = this.todos.find((todo) => todo.id === id);
+
+      // set its isCompleted property to true
       doneTodos.isCompleted = true;
+
+      // Push that todo to our completedTodos list 
       this.completedTodos.push(doneTodos);
-      this.todos = this.todos.find((todo) => todo.id !== id);
       swal({
         title: "Congratulations!",
         text: "Task Completed",
@@ -55,8 +60,8 @@ export default {
   },
   provide() {
     return {
-      todo: Object,
-      // todos: this.todos,
+      todo: this.todo,
+      // Provide/inject items are not reactive by default. Encapsulate them in computed() to make them reactive.
       completedTodos: computed(() => this.completedTodos),
       todos: computed(() => this.todos),
       newTodo: this.addTodo,
