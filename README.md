@@ -1,10 +1,24 @@
 # simple-todo-first
 
+A simple to-do list app made with Vue. 
+
+## Screenshots  
+
+### Site Home Page
+
+![Todos Page of the app showing Learn Vue as a todo and Learn by making project as todo details.](simple-todo-first__todos.png "Site home page")
+
+### Pagerank Score
+
+![Pagerank score with scores for mobile and desktop view](simple-todo-app-pagerank.png "Site pagerank score")
+
+
+
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) 
 
 ## Customize configuration
 
